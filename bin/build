@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+// System
+const fs   = require('fs');
+const path = require('path');
+
+// Libs
+const argv = require('minimist')(process.argv.slice(2));
+
+// Project
+const { exec } = require('./lib/exec.js');
+const gen = require('./lib/templates.js');
+
+// Exit on help
+if (argv.help) {
+  console.log('This script does not have any flags.');
+  console.log('You can find the output at build/application.js');
+  process.exit();
+};
+
+// Parse arguments and generate build files
+const elmMakeCMD = path.join(__dirname, '..', 'node_modules/.bin/elm-make');
+const elmMakeArgv =
+  [ 'src/Application.elm'
+  , '--output'
+  , 'build/application.js'
+  , '--yes'
+  , '--warn'
+  ];
+gen.indeHTMLFile(true);
+exec('elm-make', elmMakeCMD, elmMakeArgv);

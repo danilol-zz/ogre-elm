@@ -1,0 +1,13 @@
+sudo: required
+language: node_js
+services:
+  - docker
+cache:
+  directories:
+    - node_modules
+    - elm-stuff
+    - tests/elm-stuff
+install:
+  - docker run --rm -v $PWD:/workspace kkarczmarczyk/node-yarn /bin/bash -c "yarn"
+script:
+  - docker run --rm -v $PWD:/workspace kkarczmarczyk/node-yarn /bin/bash -c "yes | yarn test"

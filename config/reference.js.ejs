@@ -1,0 +1,17 @@
+<% if (false) { %>
+// This file is a reference file, to add local custom parameters
+// please create a file named config.js.ejs under the config directory.
+// You can add here your configuration parameters, you can use the `env` object
+// for accessing to the environment variables (EX: env.BACKEND_URL).
+
+// Example:
+// Adding a backend url by default or from an environment variable
+//
+// window.config = {
+//   backendURL: <%= env.BACKEND_URL || 'http://localhost:9000' %>
+// }
+<% } %>
+
+window.config = {
+  title: <%= env.TITLE || "Hello world" %>
+}

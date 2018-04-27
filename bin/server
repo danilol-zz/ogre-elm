@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+// System
+const fs = require('fs');
+const path = require('path');
+
+// Libs
+const argv = require('minimist')(process.argv.slice(2));
+
+// Project
+const { exec } = require('./lib/exec.js');
+const gen      = require('./lib/templates.js');
+
+// Exit on help
+if (argv.help) {
+  console.log('You can use this flags together with this script:');
+  console.log('  -h  to select the hostname. default: 0.0.0.0');
+  console.log('  -p  to select the port. default: 3000');
+  console.log('  -r  to select the livereload port. default: 35729');
+  console.log('  -d  to select the livereload directory. default: src');
+  process.exit();
+};
+
+// Generate config and html files
+gen.configFile();
+gen.indeHTMLFile(false);
+
+// Parse arguments and start the servers
+const elmReactorCMD =
+  path.join(__dirname, '..', 'node_modules/.bin/elm-reactor');
+const elmReactorArgv = ['-p', argv.p || 3000, '-a', argv.h || '0.0.0.0'];
+exec('elm-reactor', elmReactorCMD, elmReactorArgv);
+
+const livereloadCMD =
+  path.join(__dirname, '..', 'node_modules/.bin/livereload');
+const livereloadArgv = [argv.d || 'src',' -e', 'elm', ' -p', argv.r || 35729]
+exec('livereload', livereloadCMD, livereloadArgv);

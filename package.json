@@ -1,0 +1,43 @@
+{
+  "name": "Elm-dev-env",
+  "version": "0.0.1",
+  "description": "This is a backbone project to use elm-reactor with commodities",
+  "main": "bin/server",
+  "author": "Danilo",
+  "license": "GPLv3",
+  "scripts": {
+    "start": "bin/server",
+    "server": "bin/server",
+    "build": "bin/build",
+    "test": "lobo",
+    "lint:l": "eslint -c landing/.eslintrc --ignore-path .eslintignore landing"
+  },
+  "devDependencies": {
+    "livereload": "^0.6.2"
+  },
+  "dependencies": {
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react-app": "^3.1.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "6.26.0",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
+    "elm-format": "^0.7.0-exp",
+    "ejs": "^2.5.6",
+    "elm": "^0.18.0",
+    "elm-format": "^0.7.0-exp",
+    "elm-test": "^0.18.7",
+    "lobo": "^0.2.3",
+    "lobo-cli": "^0.0.2",
+    "minimist": "^1.2.0"
+  }
+}
